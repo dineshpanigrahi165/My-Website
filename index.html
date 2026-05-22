@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dinesh Panigrahi | Actor Portfolio</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Segoe UI',sans-serif;
+background:#050505;
+color:white;
+overflow-x:hidden;
+line-height:1.6;
+position:relative;
+}
+
+/* CINEMATIC BACKGROUND */
+
+body::before{
+
+content:"";
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:
+
+linear-gradient(
+rgba(0,0,0,.72),
+rgba(0,0,0,.90)
+),
+
+/*
+REPLACE THIS WITH YOUR BACKGROUND BASE64
+
+Example:
+
+url("data:image/jpeg;base64,YOUR_BACKGROUND_BASE64")
+
+Recommended image:
+dark cinematic studio lights /
+theatre spotlight /
+movie production atmosphere
+*/
+
+url("images/bg.jpg");
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+filter:brightness(.85);
+
+z-index:-3;
+
+}
+
+/* CINEMATIC FILM GRID */
+
+body::after{
+
+content:"";
+
+position:fixed;
+inset:0;
+
+background:
+
+linear-gradient(
+rgba(255,255,255,.02) 1px,
+transparent 1px),
+
+linear-gradient(
+90deg,
+rgba(255,255,255,.02) 1px,
+transparent 1px);
+
+background-size:65px 65px;
+
+opacity:.35;
+
+z-index:-2;
+
+}
+
+/* CONTAINER */
+
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
+}
+
+/* NAVIGATION */
+
+nav{
+
+position:fixed;
+
+top:0;
+width:100%;
+
+background:
+rgba(0,0,0,.65);
+
+backdrop-filter:blur(15px);
+
+border-bottom:
+1px solid rgba(255,255,255,.08);
+
+z-index:1000;
+
+}
+
+.nav-content{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:18px 0;
+
+}
+
+.logo{
+
+font-weight:700;
+letter-spacing:2px;
+
+}
+
+nav ul{
+
+display:flex;
+
+list-style:none;
+
+gap:28px;
+
+}
+
+nav a{
+
+text-decoration:none;
+
+color:#ddd;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:white;
+
+}
+
+/* HERO */
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+text-align:center;
+
+padding-top:80px;
+
+}
+
+.hero h1{
+
+font-size:5rem;
+
+line-height:1;
+
+font-weight:800;
+
+margin-bottom:20px;
+
+text-shadow:
+
+0 0 35px
+rgba(255,255,255,.12);
+
+}
+
+.hero span{
+
+background:
+
+linear-gradient(
+90deg,
+white,
+#89a8ff
+);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.hero p{
+
+max-width:650px;
+
+margin:auto;
+
+font-size:1.15rem;
+
+color:#d6d6d6;
+
+}
+
+.hero-buttons{
+
+display:flex;
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+gap:15px;
+
+margin-top:35px;
+
+}
+
+.button{
+
+padding:14px 28px;
+
+border-radius:40px;
+
+font-weight:700;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+.primary{
+
+background:white;
+
+color:black;
+
+}
+
+.secondary{
+
+background:
+
+rgba(255,255,255,.05);
+
+backdrop-filter:blur(8px);
+
+border:
+
+1px solid
+rgba(255,255,255,.15);
+
+color:white;
+
+}
+
+.button:hover{
+
+transform:
+translateY(-4px);
+
+box-shadow:
+
+0 10px 25px
+rgba(255,255,255,.12);
+
+}
+
+/* SECTION */
+
+section{
+
+padding:100px 0;
+
+}
+
+.section-title{
+
+font-size:2rem;
+
+text-align:center;
+
+margin-bottom:45px;
+
+}
+
+/* GLASS EFFECT */
+
+.about-box,
+.photo,
+.card{
+
+background:
+rgba(255,255,255,.04);
+
+backdrop-filter:blur(14px);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+box-shadow:
+0 8px 30px rgba(0,0,0,.3);
+
+}
+
+/* ABOUT */
+
+.about-box{
+
+max-width:900px;
+
+padding:45px;
+
+margin:auto;
+
+border-radius:25px;
+
+text-align:center;
+
+color:#d5d5d5;
+
+font-size:1.03rem;
+
+}
+
+/* GALLERY */
+
+.gallery-grid{
+
+display:grid;
+
+grid-template-columns:
+
+repeat(
+auto-fit,
+minmax(260px,1fr));
+
+gap:25px;
+
+}
+
+.photo{
+
+aspect-ratio:3/4;
+
+overflow:hidden;
+
+border-radius:25px;
+
+transition:.35s;
+
+}
+
+.photo:hover{
+
+transform:
+
+translateY(-10px);
+
+box-shadow:
+
+0 15px 35px
+rgba(140,170,255,.18);
+
+}
+
+.photo img{
+
+width:100%;
+height:100%;
+object-fit:cover;
+
+}
+
+/* CONTACT */
+
+.contact-cards{
+
+display:grid;
+
+grid-template-columns:
+
+repeat(
+auto-fit,
+minmax(220px,1fr));
+
+gap:20px;
+
+}
+
+.card{
+
+padding:28px;
+
+border-radius:20px;
+
+text-align:center;
+
+}
+
+.card h3{
+
+margin-bottom:10px;
+
+}
+
+.card a{
+
+text-decoration:none;
+
+color:white;
+
+word-break:break-word;
+
+}
+
+/* FOOTER */
+
+footer{
+
+padding:35px;
+
+text-align:center;
+
+color:#999;
+
+border-top:
+1px solid rgba(255,255,255,.08);
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+
+font-size:3rem;
+
+}
+
+.nav-content{
+
+flex-direction:column;
+
+gap:12px;
+
+}
+
+nav ul{
+
+gap:16px;
+
+}
+
+.about-box{
+
+padding:30px;
+
+}
+
+}
+
+@media(max-width:500px){
+
+.hero h1{
+
+font-size:2.3rem;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="container nav-content">
+
+<div class="logo">
+
+DINESH PANIGRAHI
+
+</div>
+
+<ul>
+
+<li><a href="#about">About</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+</div>
+
+</nav>
+
+<section class="hero">
+
+<div class="container">
+
+<h1>
+
+Dinesh
+<span>Panigrahi</span>
+
+</h1>
+
+<p>
+
+Actor • Storyteller • Bringing emotion,
+depth and authenticity to every performance.
+
+</p>
+
+<div class="hero-buttons">
+
+<a
+href="#gallery"
+class="button primary">
+
+View Portfolio
+
+</a>
+
+<a
+href="https://wa.me/919619884922"
+target="_blank"
+class="button secondary">
+
+WhatsApp
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="about">
+
+<div class="container">
+
+<h2 class="section-title">
+
+About Me
+
+</h2>
+
+<div class="about-box">
+
+<p>
+
+Hello, I'm
+<strong>Dinesh Panigrahi</strong>,
+an actor passionate about storytelling,
+performance and cinema.
+
+I hold a
+<strong>Master of Arts in Filmmaking</strong>
+
+from
+
+<strong>University of East London</strong>.
+
+My understanding of filmmaking,
+storytelling and performance shapes
+emotionally authentic and grounded work.
+
+</p>
+
+<br>
+
+<p>
+
+I have completed my workshop with
+
+<strong>The Actor's Truth</strong>
+
+and trained under veteran actor
+
+<strong>Saurabh Sachdeva</strong>.
+
+My training has strengthened my understanding
+of emotional truth, character development,
+screen presence and authentic performance.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="gallery">
+
+<div class="container">
+
+<h2 class="section-title">
+
+Headshots Gallery
+
+</h2>
+
+<div class="gallery-grid">
+
+<div class="photo">
+
+<img
+src="images/headshot1.jpg"
+alt="Headshot 1">
+
+</div>
+
+<div class="photo">
+
+<img
+src="images/headshot2.jpg"
+alt="Headshot 2">
+
+</div>
+
+<div class="photo">
+
+<img
+src="images/headshot3.jpg"
+alt="Headshot 3">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<div class="container">
+
+<h2 class="section-title">
+
+Contact
+
+</h2>
+
+<div class="contact-cards">
+
+<div class="card">
+
+<h3>Email</h3>
+
+<a href="mailto:dineshpanigrahi165@gmail.com">
+
+dineshpanigrahi165@gmail.com
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h3>Phone</h3>
+
+<a href="tel:+919619884922">
+
++91 9619884922
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h3>WhatsApp</h3>
+
+<a
+href="https://wa.me/919619884922"
+target="_blank">
+
+Message on WhatsApp
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Dinesh Panigrahi • Actor Portfolio
+
+</footer>
+
+</body>
+
+</html>
